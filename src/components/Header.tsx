@@ -1,29 +1,25 @@
-import DropdownMenu from "./DropdownMenu"
-import MenuItem from './Menu/MenuItem'
+import MenuItem from "./Menu/MenuItem";
+import MenuDropdown from "./Menu/MenuDropdown";
+import MenuButton from "./Menu/MenuButton";
+import Menu from "./Menu/Menu";
 
-const Header:React.FC = () => {
-    return(
-        <>
-            <header className='flex justify-between pt-5'>
-                <div className='ml-10p'>DANIAL</div>
-                <button className='mr-10p md:hidden'>hamburger</button>
-                <nav className='mr-10p hidden md:block'>
-                    <MenuItem path={'/'}>Home</MenuItem>
-                    <MenuItem path={'projects'}>Projects</MenuItem>
-                    <MenuItem path={'projects'}>Resume</MenuItem>
-                    {/* <h1 className='md:hidden'>HAMBURGER</h1>
-                    <div className='md:flex'>
-                        <h1 className='border-t border-gray-600'>Home</h1>
-                        <h1 className='border-t border-gray-600'>Projects</h1>
-                        <h1 className='border-y border-gray-600'>Resume</h1> 
-                    </div> */}
-                </nav>
-            </header>
-            <DropdownMenu/>
-        </>
-        
-    )
-}
+const Header: React.FC = () => {
+  return (
+    <header>
+      <Menu>
+        <div className="flex justify-between pt-5">
+          <div className="ml-10p">DANIAL</div>
+          <MenuButton className={"mr-10p md:hidden"}/>
+          <nav className="mr-10p hidden md:block">
+            <MenuItem path={"/"}>Home</MenuItem>
+            <MenuItem path={"projects"}>Projects</MenuItem>
+            <MenuItem path={"projects"}>Resume</MenuItem>
+          </nav>
+        </div>
+        <MenuDropdown />
+      </Menu>
+    </header>
+  );
+};
 
 export default Header;
-
