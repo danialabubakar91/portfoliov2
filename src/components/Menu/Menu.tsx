@@ -8,18 +8,20 @@ interface Props {
 interface MenuContextType {
   isOpen: boolean;
   toggleOpen: () => void;
+  closeToggle: () => void;
 }
 
 const MenuContext = createContext<MenuContextType>({
   isOpen: false,
   toggleOpen: () => {},
+  closeToggle: () => {},
 });
 export { MenuContext };
 
 const Menu: React.FC<Props> = ({ children }: Props) => {
-  const [isOpen, toggleOpen] = useToggle({ initialValue: false });
+  const [isOpen, toggleOpen, closeToggle] = useToggle({ initialValue: false });
   return (
-    <MenuContext.Provider value={{ isOpen, toggleOpen }}>
+    <MenuContext.Provider value={{ isOpen, toggleOpen, closeToggle }}>
       {children}
     </MenuContext.Provider>
   );
