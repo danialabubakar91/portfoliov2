@@ -7,7 +7,7 @@ interface Props {
 
 const MenuItem:React.FC<Props> = ({children, path} : Props) => {
     return(
-        <Link to={path}>{children}</Link>
+        <Link className="block text-right"to={path}>{children}</Link>
     )
 }
 
