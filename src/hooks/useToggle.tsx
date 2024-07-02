@@ -4,7 +4,7 @@ interface Props{
     initialValue:boolean
 }
 
-const useToggle = ({initialValue}:Props):[boolean, ()=>void] => {
+const useToggle = ({initialValue}:Props):[boolean, ()=>void, ()=>void] => {
     const[isOpen, setToggle] = useState(initialValue)    
 
     const toggleOpen = ():void => {
@@ -14,7 +14,14 @@ const useToggle = ({initialValue}:Props):[boolean, ()=>void] => {
         })
     }
 
-    return [isOpen, toggleOpen]
+    const closeToggle = ():void => {
+        setToggle((prevState)=>{
+            prevState = false;
+            return prevState;
+        })
+    }
+
+    return [isOpen, toggleOpen, closeToggle]
 }
 
 export default useToggle
