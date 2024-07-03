@@ -1,7 +1,4 @@
 import MenuItem from "./Menu/MenuItem";
-import MenuDropdown from "./Menu/MenuDropdown";
-import MenuButton from "./Menu/MenuButton";
-import Menu from "./Menu/Menu";
 import MenuRadix from "./Menu/MenuRadix";
 
 const Header: React.FC = () => {
@@ -10,33 +7,13 @@ const Header: React.FC = () => {
       <div className="w-4/5 mx-auto flex justify-between pt-5">
         <div >DANIAL</div>
         <MenuRadix className={"md:hidden"}/>
-        <nav className="mr-10p hidden md:block">
-            <MenuItem path={"/"}>Home</MenuItem>
-            <MenuItem path={"projects"}>Projects</MenuItem>
-            <MenuItem path={"projects"}>Resume</MenuItem>
+        <nav className="hidden md:block">
+            <MenuItem className="text-right ml-5 border border-red-400" path={"/"}>Home</MenuItem>
+            <MenuItem className="text-right ml-5 border border-red-400" path={"projects"}>Projects</MenuItem>
+            <MenuItem className="text-right ml-5 border border-red-400" path={"projects"}>Resume</MenuItem>
           </nav>
       </div>
     </header>
-    // <header>
-    //   <Menu>
-    //     <div className="flex justify-between pt-5">
-    //       <div className="ml-10p">DANIAL</div>
-    //       <MenuButton className={"mr-10p md:hidden"} />
-          // <nav className="mr-10p hidden md:block">
-          //   <MenuItem path={"/"}>Home</MenuItem>
-          //   <MenuItem path={"projects"}>Projects</MenuItem>
-          //   <MenuItem path={"projects"}>Resume</MenuItem>
-          // </nav>
-    //     </div>
-    //     <MenuDropdown>
-    //       <div className="md:hidden">
-    //         <MenuItem path={"/"}>Home</MenuItem>
-    //         <MenuItem path={"projects"}>Projects</MenuItem>
-    //         <MenuItem path={"projects"}>Resume</MenuItem>
-    //       </div>
-    //     </MenuDropdown>
-    //   </Menu>
-    // </header>
   );
 };
 
