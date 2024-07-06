@@ -3,8 +3,8 @@ import Menu from "./Menu/Menu";
 
 const Header: React.FC = () => {
   return (
-    <header className="max-h-[20vh] sticky top-0 z-10 bg-blue-900">
-      <div className="w-4/5 mx-auto flex justify-between pt-5">
+    <header className="h-auto">
+      <div className="w-5/6 mx-auto flex justify-between pt-5">
         <div>DANIAL</div>
         <Menu className={"md:hidden"} />
         <nav className="hidden md:block">
