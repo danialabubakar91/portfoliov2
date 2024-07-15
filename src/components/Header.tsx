@@ -3,25 +3,25 @@ import Menu from "./Menu/Menu";
 
 const Header: React.FC = () => {
   return (
-    <header className="h-auto">
-      <div className="w-5/6 mx-auto flex justify-between pt-5">
+    <header className="h-16 ">
+      <div className="w-5/6 mx-auto h-full flex flex-row justify-between items-center">
         <div>DANIAL</div>
         <Menu className={"md:hidden"} />
         <nav className="hidden md:block">
           <MenuItem
-            className="text-right ml-5 border border-red-400"
+            className="text-right ml-5"
             path={"/"}
           >
             Home
           </MenuItem>
           <MenuItem
-            className="text-right ml-5 border border-red-400"
+            className="text-right ml-5"
             path={"projects"}
           >
             Projects
           </MenuItem>
           <MenuItem
-            className="text-right ml-5 border border-red-400"
+            className="text-right ml-5"
             path={"projects"}
           >
             Resume
