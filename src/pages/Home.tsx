@@ -30,8 +30,8 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen pl-3 pb-3 overflow-y-hidden">
-      <div className="hidden  overflow-y-auto md:h-auto md:w-2/6 md:p-6 md:flex md:flex-col md:items-center md:border md:border-r-1 md:rounded-xl ">
+    <div className="flex h-screen  pl-3 pb-3 overflow-y-hidden">
+      <div className="hidden overflow-y-auto md:h-auto md:w-2/6 md:p-6 md:flex md:flex-col md:items-center md:border md:border-r-1 md:rounded-xl ">
         <img className="h-48 w-48 rounded-md" src={profileImg} alt="Profile" />
         <nav className="my-10 flex-grow">
           <ul>
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
           <div>C</div>
         </div>
       </div>
-      <div className="w-full overflow-y-auto md:w-4/6 md:p-5p md:py-6 ">
+      <div className="w-full overflow-y-auto md:w-4/6 md:px-5p  md:flex md:flex-col md:gap-32">
         <img
           className="h-72 w-72 rounded-md md:hidden"
           src={profileImg}
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
         <section
           ref={aboutRef}
           id="about"
-          className="min-h-3/4 pb-24"
+          // className="min-h-3/4"
         >
           <h2 className="text-xl mb-1">Hello! My name is...</h2>
           <h1 className="text-4xl mb-1 text-green-400">Danial Abu Bakar</h1>
@@ -124,10 +124,10 @@ const Home: React.FC = () => {
         <section
           ref={skillsRef}
           id="skills"
-          className="min-h-3/4 grid grid-cols-2 gap-4"
+          className="grid grid-cols-2 gap-4"
         >
-          <div className="py-5p px-10p bg-slate-100 border rounded-lg text-slate-800">
-            <h1 className="mb-3">Frontend Frameworks</h1>
+          <div className="py-5p px-10p shadow-light rounded-md">
+            <h1 className="mb-3 font-semibold">Frontend Frameworks</h1>
             <p>ReactJS 60%</p>
             <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
               <div className="w-60p h-full border rounded-md bg-green-400"></div>
@@ -141,8 +141,8 @@ const Home: React.FC = () => {
               <div className="w-40p h-full border rounded-md bg-green-400"></div>
             </div>
           </div>
-          <div className="py-5p px-10p bg-slate-100 border rounded-lg text-slate-800">
-            <h1 className="mb-3">Backend Frameworks</h1>
+          <div className="py-5p px-10p shadow-light rounded-md">
+            <h1 className="mb-3 font-semibold">Backend Frameworks</h1>
             <p>Spring Boot 70%</p>
             <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
               <div className="w-70p h-full border rounded-md bg-green-400"></div>
@@ -156,8 +156,8 @@ const Home: React.FC = () => {
               <div className="w-30p h-full border rounded-md bg-green-400"></div>
             </div>
           </div>
-          <div className="py-5p px-10p bg-slate-100 border rounded-lg text-slate-800">
-            <h1 className="mb-3">Databases</h1>
+          <div className="py-5p px-10p shadow-light rounded-md">
+            <h1 className="mb-3 font-semibold">Databases</h1>
             <p>MySQL 60%</p>
             <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
               <div className="w-60p h-full border rounded-md bg-green-400"></div>
@@ -167,8 +167,8 @@ const Home: React.FC = () => {
               <div className="w-50p h-full border rounded-md bg-green-400"></div>
             </div>
           </div>
-          <div className="py-5p px-10p bg-slate-100 border rounded-lg text-slate-800">
-            <h1 className="mb-3">Programming Languages</h1>
+          <div className="py-5p px-10p shadow-light rounded-md">
+            <h1 className="mb-3 font-semibold">Programming Languages</h1>
             <p>HTML, CSS 70%</p>
             <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
               <div className="w-70p h-full border rounded-md bg-green-400"></div>
@@ -186,8 +186,8 @@ const Home: React.FC = () => {
               <div className="w-80p h-full border rounded-md bg-green-400"></div>
             </div>
           </div>
-          <div className="bg-slate-100 text-slate-800 border rounded-lg py-5p px-10p col-span-2">
-            <h1 className="mb-3">Other</h1>
+          <div className="shadow-light rounded-md py-5p px-10p col-span-2">
+            <h1 className="mb-3 font-semibold">Other</h1>
             <p>GitHub, GitLab 80%</p>
             <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
               <div className="w-80p h-full border rounded-md bg-green-400"></div>
@@ -205,9 +205,11 @@ const Home: React.FC = () => {
         <section
           ref={experienceRef}
           id="experience"
-          className="min-h-3/4 "
+          className="min-h-3/4 flex flex-col"
         >
-          Experience
+          <div>0</div>
+          <div>0</div>
+          <div>0</div>
         </section>
       </div>
     </div>

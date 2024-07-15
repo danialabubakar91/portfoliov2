@@ -40,6 +40,9 @@ export default {
         "90p": "90%",
         "100p": "100%",
       },
+      boxShadow: {
+        'light': '0 4px 6px -1px rgb(255 255 255 / 0.5), 0 2px 4px -2px rgb(255 255 255 / 0.5)',
+      },
     },
   },
   plugins: [],
