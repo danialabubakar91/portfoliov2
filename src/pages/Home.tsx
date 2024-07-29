@@ -1,7 +1,10 @@
 import profileImg from "../assets/profile.jpg";
-import { useRef } from "react";
 import { HashLink } from "react-router-hash-link";
+import { useRef } from "react";
 import useInViewPort from "../hooks/useInViewPort";
+import SkillCard from "../components/SkillCard/SkillCard";
+import SkillCardItem from "../components/SkillCard/SkillCardItem";
+import skillsData from "../data/skillsData.json";
 
 const Home: React.FC = () => {
   const aboutRef = useRef<HTMLElement>(null);
@@ -10,36 +13,43 @@ const Home: React.FC = () => {
 
   const aboutInView = useInViewPort(aboutRef, { threshold: 0.5 });
   const skillsInView = useInViewPort(skillsRef, { threshold: 0.5 });
-  const experienceInView = useInViewPort(experienceRef, { threshold: 0.5 });
+  const experienceInView = useInViewPort(experienceRef, { threshold: 0.1 });
 
-  let aboutOn;
-  let skillsOn;
-  let experienceOn;
-  if (experienceInView) {
-    aboutOn = false;
-    skillsOn = false;
-    experienceOn = true;
-  } else if ((skillsInView && aboutInView) || skillsInView) {
-    aboutOn = false;
-    skillsOn = true;
-    experienceOn = false;
-  } else {
-    aboutOn = true;
-    skillsOn = false;
-    experienceOn = false;
-  }
+  const renderSkillCards = () => {
+    let resultList = skillsData.topics.map((topic) => {
+      let skills = topic.skills.map((skill) => {
+        return (
+          <SkillCardItem
+            key={skill.item}
+            item={skill.item}
+            rating={skill.rating}
+          />
+        );
+      });
+      return (
+        <SkillCard key={topic.title} title={topic.title} containerStyle={'py-5p px-10p shadow-light rounded-md'}>
+          {skills}
+        </SkillCard>
+      );
+    });
+    return resultList;
+  };
 
   return (
-    <div className="flex h-screen  pl-3 pb-3 overflow-y-hidden">
-      <div className="hidden overflow-y-auto md:h-auto md:w-2/6 md:p-6 md:flex md:flex-col md:items-center md:border md:border-r-1 md:rounded-xl ">
-        <img className="h-48 w-48 rounded-md" src={profileImg} alt="Profile" />
+    <div className="flex flex-row overflow">
+      <div className="w-1/3 flex flex-col border border-r-1 rounded-xl items-center h-sidenav sticky-sidenav">
+        <img
+          className="h-48 w-48 rounded-md mt-4"
+          src={profileImg}
+          alt="Profile"
+        />
         <nav className="my-10 flex-grow">
           <ul>
             <li className="mb-2 group">
               <span
                 className={`inline-block w-1 h-3.5 mr-2 transition-width ease-in-out duration-300 
                 ${
-                  aboutOn
+                  aboutInView
                     ? "w-2 bg-green-400"
                     : "group-hover:w-2 group-hover:bg-green-400"
                 }`}
@@ -52,7 +62,7 @@ const Home: React.FC = () => {
               <span
                 className={`inline-block w-1 h-3.5 mr-2 transition-width ease-in-out duration-300 
                 ${
-                  skillsOn
+                  skillsInView
                     ? "w-2 bg-green-400"
                     : "group-hover:w-2 group-hover:bg-green-400"
                 }`}
@@ -65,7 +75,7 @@ const Home: React.FC = () => {
               <span
                 className={`inline-block w-1 h-3.5 mr-2 transition-width ease-in-out duration-300 
                 ${
-                  experienceOn
+                  experienceInView
                     ? "w-2 bg-green-400"
                     : "group-hover:w-2 group-hover:bg-green-400"
                 }`}
@@ -76,23 +86,19 @@ const Home: React.FC = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-row">
+        <div className="flex flex-row mb-8">
           <div>A</div>
           <div>B</div>
           <div>C</div>
         </div>
       </div>
-      <div className="w-full overflow-y-auto md:w-4/6 md:px-5p  md:flex md:flex-col md:gap-32">
+      <div className="w-2/3 flex flex-col gap-16 px-5p">
         <img
           className="h-72 w-72 rounded-md md:hidden"
           src={profileImg}
           alt="Profile"
         />
-        <section
-          ref={aboutRef}
-          id="about"
-          // className="min-h-3/4"
-        >
+        <section ref={aboutRef} id="about" className="min-h-[60vh]">
           <h2 className="text-xl mb-1">Hello! My name is...</h2>
           <h1 className="text-4xl mb-1 text-green-400">Danial Abu Bakar</h1>
           <h2 className="text-2xl mb-3">Software Developer</h2>
@@ -121,95 +127,261 @@ const Home: React.FC = () => {
             am a fit, please feel free to get in touch!
           </p>
         </section>
-        <section
-          ref={skillsRef}
-          id="skills"
-          className="grid grid-cols-2 gap-4"
-        >
-          <div className="py-5p px-10p shadow-light rounded-md">
-            <h1 className="mb-3 font-semibold">Frontend Frameworks</h1>
-            <p>ReactJS 60%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-60p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Tailwind CSS 60%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-60p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Radix UI 30%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-40p h-full border rounded-md bg-green-400"></div>
-            </div>
-          </div>
-          <div className="py-5p px-10p shadow-light rounded-md">
-            <h1 className="mb-3 font-semibold">Backend Frameworks</h1>
-            <p>Spring Boot 70%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-70p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>NodeJS 20%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-20p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>ExpressJS 30%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-30p h-full border rounded-md bg-green-400"></div>
-            </div>
-          </div>
-          <div className="py-5p px-10p shadow-light rounded-md">
-            <h1 className="mb-3 font-semibold">Databases</h1>
-            <p>MySQL 60%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-60p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Microsoft SQL Server 50%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-50p h-full border rounded-md bg-green-400"></div>
-            </div>
-          </div>
-          <div className="py-5p px-10p shadow-light rounded-md">
-            <h1 className="mb-3 font-semibold">Programming Languages</h1>
-            <p>HTML, CSS 70%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-70p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Javascript 70%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-70p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Typescript 60%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-60p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Java 80%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-80p h-full border rounded-md bg-green-400"></div>
-            </div>
-          </div>
-          <div className="shadow-light rounded-md py-5p px-10p col-span-2">
-            <h1 className="mb-3 font-semibold">Other</h1>
-            <p>GitHub, GitLab 80%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-80p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Postman 90%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-90p h-full border rounded-md bg-green-400"></div>
-            </div>
-            <p>Swagger OpenAPI 90%</p>
-            <div className="w-full h-3 mb-2 border border-violet-800 rounded-md">
-              <div className="w-90p h-full border rounded-md bg-green-400"></div>
-            </div>
-          </div>
+        <section ref={skillsRef} id="skills" className="min-h-[60vh]">
+          <h1 className="text-green-400 text-4xl underline underline-offset-4 mb-4 text-center">
+            Skills
+          </h1>
+          <div className="grid grid-cols-2 gap-4 ">{renderSkillCards()}</div>
         </section>
-        <section
-          ref={experienceRef}
-          id="experience"
-          className="min-h-3/4 flex flex-col"
-        >
-          <div>0</div>
-          <div>0</div>
-          <div>0</div>
+        <section ref={experienceRef} id="experience" className="min-h-[60vh]">
+          <div className="flex flex-col gap-4">
+            <h1 className="text-green-400 text-4xl underline underline-offset-4 text-center">
+              Experience
+            </h1>
+            {/* <ExperienceCard date='may2022 - present' title='softwareengineer' experiencelist=''/> */}
+
+
+            <div className="bg-gray-400 rounded-md bg-opacity-10 border border-gray-100 p-4">
+              <p className='mb-3'>May 2022 - PRESENT</p>
+              <h1 className="text-green-400">
+                Software Engineer - NEC Asia Pacific
+              </h1>
+              <ul className="list-disc px-6 list-marker-green">
+                <li>
+                  Backend development using Java Spring Boot to build
+                  microservice applications.
+                </li>
+                <li>
+                  Designed and implemented RESTful APIs with Spring Boot,
+                  enabling seamless integration with internal and external
+                  services.
+                </li>
+                <li>
+                  Developed secure RESTful APIs using JWT tokens for
+                  authentication and authorization, integrating with Keycloak
+                  for identity access management.
+                </li>
+                <li>
+                  Understanding and familiarizing myself with DevOps tools like
+                  Docker and Kubernetes to deploy, scale and troubleshoot
+                  microservice applications.
+                </li>
+                <li>
+                  Perform load testing on microservice applications with JMeter
+                  to test for functional issues that may arise due to
+                  concurrency including performance issues.
+                </li>
+                <li>
+                  Document API specifications using tools like Swagger OpenAPI
+                  to ensure clarity and facilitate collaboration within the
+                  team.
+                </li>
+              </ul>
+              <div className='flex flex-row flex-wrap gap-2'>
+                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
+                  Java
+                </div>
+                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
+                  Spring Boot
+                </div>
+                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
+                REST API
+                </div>
+                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
+                  MySQL
+                </div>
+                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
+                  JMeter
+                </div>
+                
+              </div>
+            </div>
+            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
+              <p className='mb-3'>May 2022 - PRESENT</p>
+              <h1 className="text-green-400">
+                Software Engineer - NEC Asia Pacific
+              </h1>
+              <ul className="list-disc px-6 list-marker-green">
+                <li>
+                  Backend development using Java Spring Boot to build
+                  microservice applications.
+                </li>
+                <li>
+                  Designed and implemented RESTful APIs with Spring Boot,
+                  enabling seamless integration with internal and external
+                  services.{" "}
+                </li>
+                <li>
+                  Developed secure RESTful APIs using JWT tokens for
+                  authentication and authorization, integrating with Keycloak
+                  for identity access management.
+                </li>
+                <li>
+                  Understanding and familiarizing myself with DevOps tools like
+                  Docker and Kubernetes to deploy, scale and troubleshoot
+                  microservice applications.{" "}
+                </li>
+                <li>
+                  Perform load testing on microservice applications with JMeter
+                  to test for functional issues that may arise due to
+                  concurrency including performance issues.{" "}
+                </li>
+                <li>
+                  Document API specifications using tools like Swagger OpenAPI
+                  to ensure clarity and facilitate collaboration within the
+                  team.{" "}
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
+              <p className='mb-3'>May 2022 - PRESENT</p>
+              <h1 className="text-green-400">
+                Software Engineer - NEC Asia Pacific
+              </h1>
+              <ul className="list-disc px-6 list-marker-green">
+                <li>
+                  Backend development using Java Spring Boot to build
+                  microservice applications.
+                </li>
+                <li>
+                  Designed and implemented RESTful APIs with Spring Boot,
+                  enabling seamless integration with internal and external
+                  services.{" "}
+                </li>
+                <li>
+                  Developed secure RESTful APIs using JWT tokens for
+                  authentication and authorization, integrating with Keycloak
+                  for identity access management.
+                </li>
+                <li>
+                  Understanding and familiarizing myself with DevOps tools like
+                  Docker and Kubernetes to deploy, scale and troubleshoot
+                  microservice applications.{" "}
+                </li>
+                <li>
+                  Perform load testing on microservice applications with JMeter
+                  to test for functional issues that may arise due to
+                  concurrency including performance issues.{" "}
+                </li>
+                <li>
+                  Document API specifications using tools like Swagger OpenAPI
+                  to ensure clarity and facilitate collaboration within the
+                  team.{" "}
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
+              <p className='mb-3'>May 2022 - PRESENT</p>
+              <h1 className="text-green-400">
+                Software Engineer - NEC Asia Pacific
+              </h1>
+              <ul className="list-disc px-6 list-marker-green">
+                <li>
+                  Backend development using Java Spring Boot to build
+                  microservice applications.
+                </li>
+                <li>
+                  Designed and implemented RESTful APIs with Spring Boot,
+                  enabling seamless integration with internal and external
+                  services.{" "}
+                </li>
+                <li>
+                  Developed secure RESTful APIs using JWT tokens for
+                  authentication and authorization, integrating with Keycloak
+                  for identity access management.
+                </li>
+                <li>
+                  Understanding and familiarizing myself with DevOps tools like
+                  Docker and Kubernetes to deploy, scale and troubleshoot
+                  microservice applications.{" "}
+                </li>
+                <li>
+                  Perform load testing on microservice applications with JMeter
+                  to test for functional issues that may arise due to
+                  concurrency including performance issues.{" "}
+                </li>
+                <li>
+                  Document API specifications using tools like Swagger OpenAPI
+                  to ensure clarity and facilitate collaboration within the
+                  team.{" "}
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
+              <p className='mb-3'>May 2022 - PRESENT</p>
+              <h1 className="text-green-400">
+                Software Engineer - NEC Asia Pacific
+              </h1>
+              <ul className="list-disc px-6 list-marker-green">
+                <li>
+                  Backend development using Java Spring Boot to build
+                  microservice applications.
+                </li>
+                <li>
+                  Designed and implemented RESTful APIs with Spring Boot,
+                  enabling seamless integration with internal and external
+                  services.{" "}
+                </li>
+                <li>
+                  Developed secure RESTful APIs using JWT tokens for
+                  authentication and authorization, integrating with Keycloak
+                  for identity access management.
+                </li>
+                <li>
+                  Understanding and familiarizing myself with DevOps tools like
+                  Docker and Kubernetes to deploy, scale and troubleshoot
+                  microservice applications.{" "}
+                </li>
+                <li>
+                  Perform load testing on microservice applications with JMeter
+                  to test for functional issues that may arise due to
+                  concurrency including performance issues.{" "}
+                </li>
+                <li>
+                  Document API specifications using tools like Swagger OpenAPI
+                  to ensure clarity and facilitate collaboration within the
+                  team.{" "}
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
+              <p className='mb-3'>May 2022 - PRESENT</p>
+              <h1 className="text-green-400">
+                Software Engineer - NEC Asia Pacific
+              </h1>
+              <ul className="list-disc px-6 list-marker-green">
+                <li>
+                  Backend development using Java Spring Boot to build
+                  microservice applications.
+                </li>
+                <li>
+                  Designed and implemented RESTful APIs with Spring Boot,
+                  enabling seamless integration with internal and external
+                  services.{" "}
+                </li>
+                <li>
+                  Developed secure RESTful APIs using JWT tokens for
+                  authentication and authorization, integrating with Keycloak
+                  for identity access management.
+                </li>
+                <li>
+                  Understanding and familiarizing myself with DevOps tools like
+                  Docker and Kubernetes to deploy, scale and troubleshoot
+                  microservice applications.{" "}
+                </li>
+                <li>
+                  Perform load testing on microservice applications with JMeter
+                  to test for functional issues that may arise due to
+                  concurrency including performance issues.{" "}
+                </li>
+                <li>
+                  Document API specifications using tools like Swagger OpenAPI
+                  to ensure clarity and facilitate collaboration within the
+                  team.{" "}
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
       </div>
     </div>
