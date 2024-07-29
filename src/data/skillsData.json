@@ -1,0 +1,89 @@
+{
+  "topics": [
+    {
+      "title": "Frontend Frameworks",
+      "skills": [
+        {
+          "item": "ReactJS",
+          "rating": "60"
+        },
+        {
+          "item": "Tailwind CSS",
+          "rating": "60"
+        },
+        {
+          "item": "Radix UI",
+          "rating": "30"
+        }
+      ]
+    },
+    {
+        "title": "Backend Frameworks",
+        "skills": [
+          {
+            "item": "Spring Boot",
+            "rating": "70"
+          },
+          {
+            "item": "NodeJS",
+            "rating": "20"
+          },
+          {
+            "item": "ExpressJS",
+            "rating": "30" 
+          }
+        ]
+      },
+      {
+        "title": "Databases",
+        "skills": [
+          {
+            "item": "MySQL",
+            "rating": "60" 
+          },
+          {
+            "item": "Microsoft SQL Server",
+            "rating": "50" 
+          }
+        ]
+      },
+      {
+        "title": "Programming Languages",
+        "skills": [
+          {
+            "item": "HTML, CSS",
+            "rating": "70" 
+          },
+          {
+            "item": "Javascript",
+            "rating": "70" 
+          },
+          {
+            "item": "Typescript",
+            "rating": "60"  
+          },
+          {
+            "item": "Java",
+            "rating": "70"
+          }
+        ]
+      },
+      {
+        "title": "Other",
+        "skills": [
+          {
+            "item": "GitHub, GitLab",
+            "rating": "80"
+          },
+          {
+            "item": "Postman",
+            "rating": "90"
+          },
+          {
+            "item": "Swagger OpenAPI",
+            "rating": "90"
+          }
+        ]
+      }
+  ]
+}

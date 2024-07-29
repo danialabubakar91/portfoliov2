@@ -1,0 +1,20 @@
+{
+    "experiences": [
+        {
+            "job":"Software Engineer",
+            "company": "NEC Asia Pacific",
+            "period": "May 2022 - PRESENT",
+            "responsibilities": [
+                "Backend development using Java Spring Boot to build microservice applications.",
+                "Designed and implemented RESTful APIs with Spring Boot, enabling seamless integration with internal and external services.",
+                "Developed secure RESTful APIs using JWT tokens for authentication and authorization, integrating with Keycloak for identity access management.",
+                "Understanding and familiarizing myself with DevOps tools like Docker and Kubernetes to deploy, scale and troubleshoot microservice applications.",
+                "Perform load testing on microservice applications with JMeter to test for functional issues that may arise due to concurrency including performance issues.",
+                "Document API specifications using tools like Swagger OpenAPI to ensure clarity and facilitate collaboration within the team."
+            ],
+            "skillTag": [
+                "Java","Spring Boot", "REST API", "MySQL", "JMeter"
+            ]
+        }
+    ]
+}
