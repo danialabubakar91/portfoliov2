@@ -12,8 +12,25 @@
                 "Perform load testing on microservice applications with JMeter to test for functional issues that may arise due to concurrency including performance issues.",
                 "Document API specifications using tools like Swagger OpenAPI to ensure clarity and facilitate collaboration within the team."
             ],
-            "skillTag": [
+            "skills": [
                 "Java","Spring Boot", "REST API", "MySQL", "JMeter"
+            ]
+        },
+        {
+            "job":"Senior IT Analyst",
+            "company": "TransitLink Pte Ltd",
+            "period": "Apr 2021 - Dec 2021",
+            "responsibilities": [
+                "Supporting of Transitlink internal application systems.",
+                "Troubleshooting issues in Transitlink applications throughs SQL queries and log checking in servers.",
+                "Writing SQL scripts for data analysis and investigations for detecting issues caused by system or business operations.",
+                "Writing SQL scripts for data patching due to system or operational issues.",
+                "Coordinate with both business and IT side to resolve and enhance current application systems.",
+                "Conduct data extraction using SQL for Transcom investigations and Covid-19 contact tracing.",
+                "Supporting and coordination of application deployment and verification activities."
+            ],
+            "skills": [
+                "SQL","Data Analysis", "Application Support", "Deployment Support"
             ]
         }
     ]
