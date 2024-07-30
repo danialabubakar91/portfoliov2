@@ -5,6 +5,8 @@ import useInViewPort from "../hooks/useInViewPort";
 import SkillCard from "../components/SkillCard/SkillCard";
 import SkillCardItem from "../components/SkillCard/SkillCardItem";
 import skillsData from "../data/skillsData.json";
+import ExperienceCard from "../components/ExperienceCard/ExperienceCard";
+import experienceData from "../data/experienceData.json";
 
 const Home: React.FC = () => {
   const aboutRef = useRef<HTMLElement>(null);
@@ -15,9 +17,9 @@ const Home: React.FC = () => {
   const skillsInView = useInViewPort(skillsRef, { threshold: 0.5 });
   const experienceInView = useInViewPort(experienceRef, { threshold: 0.1 });
 
-  const renderSkillCards = () => {
-    let resultList = skillsData.topics.map((topic) => {
-      let skills = topic.skills.map((skill) => {
+  const renderSkillCards = (): JSX.Element[] => {
+    const skillCards = skillsData.topics.map((topic) => {
+      const skills = topic.skills.map((skill) => {
         return (
           <SkillCardItem
             key={skill.item}
@@ -27,12 +29,34 @@ const Home: React.FC = () => {
         );
       });
       return (
-        <SkillCard key={topic.title} title={topic.title} containerStyle={'py-5p px-10p shadow-light rounded-md'}>
+        <SkillCard
+          key={topic.title}
+          title={topic.title}
+          containerStyle={"py-5p px-10p shadow-light rounded-md"}
+        >
           {skills}
         </SkillCard>
       );
     });
-    return resultList;
+    return skillCards;
+  };
+
+  const renderExperienceCards = (): JSX.Element[] => {
+    const experienceCards = experienceData.experiences.map(
+      (experience, index) => {
+        return (
+          <ExperienceCard
+            key={index}
+            period={experience.period}
+            job={experience.job}
+            company={experience.company}
+            responsibilities={experience.responsibilities}
+            skills={experience.skills}
+          />
+        );
+      }
+    );
+    return experienceCards;
   };
 
   return (
@@ -138,249 +162,7 @@ const Home: React.FC = () => {
             <h1 className="text-green-400 text-4xl underline underline-offset-4 text-center">
               Experience
             </h1>
-            {/* <ExperienceCard date='may2022 - present' title='softwareengineer' experiencelist=''/> */}
-
-
-            <div className="bg-gray-400 rounded-md bg-opacity-10 border border-gray-100 p-4">
-              <p className='mb-3'>May 2022 - PRESENT</p>
-              <h1 className="text-green-400">
-                Software Engineer - NEC Asia Pacific
-              </h1>
-              <ul className="list-disc px-6 list-marker-green">
-                <li>
-                  Backend development using Java Spring Boot to build
-                  microservice applications.
-                </li>
-                <li>
-                  Designed and implemented RESTful APIs with Spring Boot,
-                  enabling seamless integration with internal and external
-                  services.
-                </li>
-                <li>
-                  Developed secure RESTful APIs using JWT tokens for
-                  authentication and authorization, integrating with Keycloak
-                  for identity access management.
-                </li>
-                <li>
-                  Understanding and familiarizing myself with DevOps tools like
-                  Docker and Kubernetes to deploy, scale and troubleshoot
-                  microservice applications.
-                </li>
-                <li>
-                  Perform load testing on microservice applications with JMeter
-                  to test for functional issues that may arise due to
-                  concurrency including performance issues.
-                </li>
-                <li>
-                  Document API specifications using tools like Swagger OpenAPI
-                  to ensure clarity and facilitate collaboration within the
-                  team.
-                </li>
-              </ul>
-              <div className='flex flex-row flex-wrap gap-2'>
-                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
-                  Java
-                </div>
-                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
-                  Spring Boot
-                </div>
-                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
-                REST API
-                </div>
-                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
-                  MySQL
-                </div>
-                <div className="border border-green-300 rounded-2xl w-fit px-4 py-1 mt-4 bg-green-800 text-green-300">
-                  JMeter
-                </div>
-                
-              </div>
-            </div>
-            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
-              <p className='mb-3'>May 2022 - PRESENT</p>
-              <h1 className="text-green-400">
-                Software Engineer - NEC Asia Pacific
-              </h1>
-              <ul className="list-disc px-6 list-marker-green">
-                <li>
-                  Backend development using Java Spring Boot to build
-                  microservice applications.
-                </li>
-                <li>
-                  Designed and implemented RESTful APIs with Spring Boot,
-                  enabling seamless integration with internal and external
-                  services.{" "}
-                </li>
-                <li>
-                  Developed secure RESTful APIs using JWT tokens for
-                  authentication and authorization, integrating with Keycloak
-                  for identity access management.
-                </li>
-                <li>
-                  Understanding and familiarizing myself with DevOps tools like
-                  Docker and Kubernetes to deploy, scale and troubleshoot
-                  microservice applications.{" "}
-                </li>
-                <li>
-                  Perform load testing on microservice applications with JMeter
-                  to test for functional issues that may arise due to
-                  concurrency including performance issues.{" "}
-                </li>
-                <li>
-                  Document API specifications using tools like Swagger OpenAPI
-                  to ensure clarity and facilitate collaboration within the
-                  team.{" "}
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
-              <p className='mb-3'>May 2022 - PRESENT</p>
-              <h1 className="text-green-400">
-                Software Engineer - NEC Asia Pacific
-              </h1>
-              <ul className="list-disc px-6 list-marker-green">
-                <li>
-                  Backend development using Java Spring Boot to build
-                  microservice applications.
-                </li>
-                <li>
-                  Designed and implemented RESTful APIs with Spring Boot,
-                  enabling seamless integration with internal and external
-                  services.{" "}
-                </li>
-                <li>
-                  Developed secure RESTful APIs using JWT tokens for
-                  authentication and authorization, integrating with Keycloak
-                  for identity access management.
-                </li>
-                <li>
-                  Understanding and familiarizing myself with DevOps tools like
-                  Docker and Kubernetes to deploy, scale and troubleshoot
-                  microservice applications.{" "}
-                </li>
-                <li>
-                  Perform load testing on microservice applications with JMeter
-                  to test for functional issues that may arise due to
-                  concurrency including performance issues.{" "}
-                </li>
-                <li>
-                  Document API specifications using tools like Swagger OpenAPI
-                  to ensure clarity and facilitate collaboration within the
-                  team.{" "}
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
-              <p className='mb-3'>May 2022 - PRESENT</p>
-              <h1 className="text-green-400">
-                Software Engineer - NEC Asia Pacific
-              </h1>
-              <ul className="list-disc px-6 list-marker-green">
-                <li>
-                  Backend development using Java Spring Boot to build
-                  microservice applications.
-                </li>
-                <li>
-                  Designed and implemented RESTful APIs with Spring Boot,
-                  enabling seamless integration with internal and external
-                  services.{" "}
-                </li>
-                <li>
-                  Developed secure RESTful APIs using JWT tokens for
-                  authentication and authorization, integrating with Keycloak
-                  for identity access management.
-                </li>
-                <li>
-                  Understanding and familiarizing myself with DevOps tools like
-                  Docker and Kubernetes to deploy, scale and troubleshoot
-                  microservice applications.{" "}
-                </li>
-                <li>
-                  Perform load testing on microservice applications with JMeter
-                  to test for functional issues that may arise due to
-                  concurrency including performance issues.{" "}
-                </li>
-                <li>
-                  Document API specifications using tools like Swagger OpenAPI
-                  to ensure clarity and facilitate collaboration within the
-                  team.{" "}
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
-              <p className='mb-3'>May 2022 - PRESENT</p>
-              <h1 className="text-green-400">
-                Software Engineer - NEC Asia Pacific
-              </h1>
-              <ul className="list-disc px-6 list-marker-green">
-                <li>
-                  Backend development using Java Spring Boot to build
-                  microservice applications.
-                </li>
-                <li>
-                  Designed and implemented RESTful APIs with Spring Boot,
-                  enabling seamless integration with internal and external
-                  services.{" "}
-                </li>
-                <li>
-                  Developed secure RESTful APIs using JWT tokens for
-                  authentication and authorization, integrating with Keycloak
-                  for identity access management.
-                </li>
-                <li>
-                  Understanding and familiarizing myself with DevOps tools like
-                  Docker and Kubernetes to deploy, scale and troubleshoot
-                  microservice applications.{" "}
-                </li>
-                <li>
-                  Perform load testing on microservice applications with JMeter
-                  to test for functional issues that may arise due to
-                  concurrency including performance issues.{" "}
-                </li>
-                <li>
-                  Document API specifications using tools like Swagger OpenAPI
-                  to ensure clarity and facilitate collaboration within the
-                  team.{" "}
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-400 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 p-4">
-              <p className='mb-3'>May 2022 - PRESENT</p>
-              <h1 className="text-green-400">
-                Software Engineer - NEC Asia Pacific
-              </h1>
-              <ul className="list-disc px-6 list-marker-green">
-                <li>
-                  Backend development using Java Spring Boot to build
-                  microservice applications.
-                </li>
-                <li>
-                  Designed and implemented RESTful APIs with Spring Boot,
-                  enabling seamless integration with internal and external
-                  services.{" "}
-                </li>
-                <li>
-                  Developed secure RESTful APIs using JWT tokens for
-                  authentication and authorization, integrating with Keycloak
-                  for identity access management.
-                </li>
-                <li>
-                  Understanding and familiarizing myself with DevOps tools like
-                  Docker and Kubernetes to deploy, scale and troubleshoot
-                  microservice applications.{" "}
-                </li>
-                <li>
-                  Perform load testing on microservice applications with JMeter
-                  to test for functional issues that may arise due to
-                  concurrency including performance issues.{" "}
-                </li>
-                <li>
-                  Document API specifications using tools like Swagger OpenAPI
-                  to ensure clarity and facilitate collaboration within the
-                  team.{" "}
-                </li>
-              </ul>
-            </div>
+            {renderExperienceCards()}
           </div>
         </section>
       </div>
