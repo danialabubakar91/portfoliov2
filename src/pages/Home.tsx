@@ -17,6 +17,12 @@ const Home: React.FC = () => {
   const skillsInView = useInViewPort(skillsRef, { threshold: 0.5 });
   const experienceInView = useInViewPort(experienceRef, { threshold: 0.1 });
 
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -64;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  };
+
   const renderSkillCards = (): JSX.Element[] => {
     const skillCards = skillsData.topics.map((topic) => {
       const skills = topic.skills.map((skill) => {
@@ -78,7 +84,7 @@ const Home: React.FC = () => {
                     : "group-hover:w-2 group-hover:bg-green-400"
                 }`}
               />
-              <HashLink smooth to="/#about">
+              <HashLink smooth to="/#about" scroll={scrollWithOffset}>
                 About
               </HashLink>
             </li>
@@ -91,7 +97,7 @@ const Home: React.FC = () => {
                     : "group-hover:w-2 group-hover:bg-green-400"
                 }`}
               />
-              <HashLink smooth to="/#skills">
+              <HashLink smooth to="/#skills" scroll={scrollWithOffset}>
                 Skills
               </HashLink>
             </li>
@@ -104,7 +110,7 @@ const Home: React.FC = () => {
                     : "group-hover:w-2 group-hover:bg-green-400"
                 }`}
               />
-              <HashLink smooth to="/#experience">
+              <HashLink smooth to="/#experience" scroll={scrollWithOffset}>
                 Experience
               </HashLink>
             </li>
@@ -122,8 +128,8 @@ const Home: React.FC = () => {
           src={profileImg}
           alt="Profile"
         />
-        <section ref={aboutRef} id="about" className="min-h-[60vh]">
-          <h2 className="text-xl mb-1">Hello! My name is...</h2>
+        <section ref={aboutRef} id="about" className="min-h-[60vh] max-w-xl">
+          <h2 className="text-xl mb-1 ">Hello! My name is...</h2>
           <h1 className="text-4xl mb-1 text-green-400">Danial Abu Bakar</h1>
           <h2 className="text-2xl mb-3">Software Developer</h2>
           <h3>Singaporean</h3>
@@ -163,6 +169,29 @@ const Home: React.FC = () => {
               Experience
             </h1>
             {renderExperienceCards()}
+            <button className="border border-green-400  w-fit rounded-full mx-auto mb-5">
+              <HashLink smooth to="/#about" scroll={scrollWithOffset}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6  text-green-400 m-3 transition-transform duration-300 ease-in-out transform hover:-translate-y-2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m4.5 18.75 7.5-7.5 7.5 7.5"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m4.5 12.75 7.5-7.5 7.5 7.5"
+                  />
+                </svg>
+              </HashLink>
+            </button>
           </div>
         </section>
       </div>

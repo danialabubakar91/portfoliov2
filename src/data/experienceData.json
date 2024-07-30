@@ -32,6 +32,35 @@
             "skills": [
                 "SQL","Data Analysis", "Application Support", "Deployment Support"
             ]
+        },
+        {
+            "job":"VPMS Support Analyst",
+            "company": "NTUC Income",
+            "period": "Apr 2019 - Apr 2021",
+            "responsibilities": [
+                "VPMS (Visual Product Modelling System) is a proprietary software used to calculate insurance premiums.",
+                "Worked on translating excel formulas used to calculate premiums from Excel spreadsheets, into VPMS.",
+                "Conduct testing to ensure correct premiums are calculated from VPMS.",
+                "Adhere to project time lines from SIT, UAT and Production and to support incident tickets for issues raised in production."
+            ],
+            "skills": [
+                "SQL","Data Analysis", "Application Support", "Excel", "VPMS"
+            ]
+        },
+        {
+            "job":"Master Data Analyst",
+            "company": "Procter & Gamble",
+            "period": "Feb 2018 - Aug 2018",
+            "responsibilities": [
+                "Daily export of data from database systems.",
+                "Produce daily scorecard reports using excel to identify gaps in data between database systems.",
+                "Using excel functions to conduct data analysis to find root cause of data gaps.",
+                "Support and coordinate with multi-functional teams to resolve issues found from data gaps.",
+                "Incident monitoring and tracking of incident tickets and fulfilment requests to ensure issues from data gaps are resolved and requests are fulfilled."
+            ],
+            "skills": [
+                "Data Analysis", "Excel", "ITSM", "Anaplan"
+            ]
         }
     ]
 }

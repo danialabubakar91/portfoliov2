@@ -2,6 +2,7 @@ import MenuItem from "./Menu/MenuItem";
 import Menu from "./Menu/Menu";
 
 const NewHeader: React.FC = () => {
+ 
   return (
     <header className='h-header flex flex-row justify-between items-center sticky top-0 bg-slate-800'>
       <div>DANIAL</div>
