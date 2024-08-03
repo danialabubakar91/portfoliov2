@@ -67,7 +67,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-row overflow">
-      <div className="w-1/3 flex flex-col border border-r-1 rounded-xl items-center h-sidenav sticky-sidenav">
+      <div className="hidden md:flex flex-col w-1/3 border border-r-1 rounded-xl items-center h-sidenav sticky-sidenav ">
         <img
           className="h-48 w-48 rounded-md mt-4"
           src={profileImg}
@@ -122,9 +122,9 @@ const Home: React.FC = () => {
           <div>C</div>
         </div>
       </div>
-      <div className="w-2/3 flex flex-col gap-16 px-5p">
+      <div className="w-full md:w-2/3 flex flex-col gap-16 px-5p">
         <img
-          className="h-72 w-72 rounded-md md:hidden"
+          className="mt-10 mx-auto h-72 w-72 rounded-md md:hidden"
           src={profileImg}
           alt="Profile"
         />
