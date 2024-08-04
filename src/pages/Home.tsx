@@ -66,8 +66,8 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row overflow">
-      <div className="hidden md:flex flex-col w-1/3 border border-r-1 rounded-xl items-center h-sidenav sticky-sidenav ">
+    <div className="max-w-screen-2xl w-4/5 mx-auto flex flex-row overflow">
+      <div className="hidden md:flex flex-col w-1/3 border border-r-1 rounded-xl items-center sidenav-height sidenav-sticky">
         <img
           className="h-48 w-48 rounded-md mt-4"
           src={profileImg}
