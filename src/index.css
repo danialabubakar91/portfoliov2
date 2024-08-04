@@ -7,20 +7,20 @@
 }
 
 @layer utilities {
-  .h-header {
+  .header-height {
     height: var(--header-height);
   }
 
-  .h-sidenav {
+  .sidenav-height {
     height: calc(100vh - var(--header-height) - 1rem); 
   }
 
-  .sticky-sidenav{
+  .sidenav-sticky{
     position:sticky;
     top:var(--header-height);
   }
 
   .list-marker-green li::marker {
-    color: #34D399; /* You can use any color you prefer */
+    color: #34D399;
   }
 }
