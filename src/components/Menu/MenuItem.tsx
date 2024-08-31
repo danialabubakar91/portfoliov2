@@ -7,10 +7,10 @@ interface Props {
     defaultFunc?: ()=>void;
 }
 
-const MenuItem:React.FC<Props> = ({children, path, className, defaultFunc} : Props) => {
+const NewMenuItem:React.FC<Props> = ({children, path, className, defaultFunc} : Props) => {
     return(
         <Link onClick={defaultFunc} className={className} to={path}>{children}</Link>
     )
 }
 
-export default MenuItem;
+export default NewMenuItem;

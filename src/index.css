@@ -11,6 +11,12 @@
     height: var(--header-height);
   }
 
+  .dropdown-header-pos {
+    position:fixed;
+    top: var(--header-height);
+    z-index: 50;
+  }
+
   .sidenav-height {
     height: calc(100vh - var(--header-height) - 1rem); 
   }

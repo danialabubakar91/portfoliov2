@@ -1,27 +1,20 @@
+
 import {useState} from 'react'
 
-interface Props{
-    initialValue:boolean
+interface Props {
+    initialOn:boolean;
 }
 
-const useToggle = ({initialValue}:Props):[boolean, ()=>void, ()=>void] => {
-    const[isOpen, setToggle] = useState(initialValue)    
+const useToggle = ({initialOn}:Props):[boolean,()=>void]  => {
+    const [on, setOn] = useState(initialOn)
 
-    const toggleOpen = ():void => {
-        setToggle((prevState) => {
-            prevState = !prevState
-            return prevState
+    const toggleOn = () => {
+        setOn((prevOn)=>{
+            return !prevOn
         })
     }
 
-    const closeToggle = ():void => {
-        setToggle((prevState)=>{
-            prevState = false;
-            return prevState;
-        })
-    }
-
-    return [isOpen, toggleOpen, closeToggle]
+    return [on, toggleOn]
 }
 
-export default useToggle
+export default useToggle;
